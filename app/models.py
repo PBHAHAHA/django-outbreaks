@@ -38,3 +38,29 @@ class Users(models.Model):
 
     class Meta:
         db_table = 'users'
+
+
+class CheckLogs(models.Model):
+    createTime = models.CharField('检查时间', db_column='create_time', max_length=19)
+    loc = models.CharField('检查地址', max_length=64, null=False)
+    result = models.CharField('检查结果', max_length=2, null=False)
+    detail = models.CharField('检查详情', max_length=125, null=False)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE, db_column="user_id")
+
+    class Meta:
+        db_table = 'check_logs'
+
+
+class VaccinateLogs(models.Model):
+    name = models.CharField('接种人姓名', max_length=20, null=False)
+    card = models.CharField('身份证号码', max_length=18, null=False)
+    card = models.CharField('身份证号码', max_length=18, null=False)
+    phone = models.CharField('电话号码', max_length=11, null=False)
+    address = models.CharField('联系地址', max_length=64, null=False)
+    detail = models.CharField('接种详情', max_length=125, null=False)
+    vaccinateNo = models.CharField('接种次数', db_column='vaccinate_no', max_length=2, null=False)
+    vaccinateTime = models.CharField('接种时间', db_column='vaccinate_time', max_length=10, null=False)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE, db_column="user_id")
+
+    class Meta:
+        db_table = "vaccinate_logs"
