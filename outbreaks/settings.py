@@ -77,6 +77,14 @@ CORS_ALLOW_HEADERS = ('*')
 #     'Pragma'
 # )
 
+# 缓存设置
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        "LOCATION": "/var/tmp/django_cache"  # 这个是文件夹的路径
+    }
+}
+
 ROOT_URLCONF = 'outbreaks.urls'
 
 TEMPLATES = [
@@ -151,4 +159,3 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-

@@ -14,9 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from app import views
 
+# class SysView(BaseView):
+#     def get(self, request, module,):
+#         if module == 'info':
+#             return SysView.getSessionInfo(request)
+
 urlpatterns = [
-    path('web/index/', views.index)
+    path('web/index/', views.index),
+    # path('web/', include('app.urls'))
 ]
